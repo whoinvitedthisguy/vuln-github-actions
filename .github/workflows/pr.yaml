@@ -1,0 +1,18 @@
+name: Validate Pull Request
+
+on:
+  pull_request_target:
+
+jobs:
+  build-and-test-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Application
+        uses: ./.github/workflows/make.yaml
+        with:
+          makeTarget: build
+        
+      - name: Test Applcation
+        uses: whoinvitedthisguy/vuln-github-workflows/.github/workflows/make.yaml
+        with:
+          makeTarget: test

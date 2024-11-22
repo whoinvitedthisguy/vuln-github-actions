@@ -1,0 +1,22 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      makeTarget:
+        description: "make target to build"
+        type: string
+        required: true
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: "actions/checkout@v4"
+        
+      - name: "make"
+        run: |
+          make ${{ inputs.makeTarket }}
+          
